@@ -1,0 +1,99 @@
+{
+  "collection": {
+    "info": {
+      "name": "User Management API",
+      "description": "Test routes for the User Management API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Create User",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "url": {
+            "raw": "http://localhost:3000/admin",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["admin"]
+          },
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"johndoe@example.com\",\n  \"password\": \"securepassword\",\n  \"role\": \"TEACHER\"\n}"
+          }
+        }
+      },
+      {
+        "name": "Get All Users",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:3000/admin",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["admin"]
+          }
+        }
+      },
+      {
+        "name": "Get Users by Role",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:3000/admin/TEACHER",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["admin", "TEACHER"]
+          }
+        }
+      },
+      {
+        "name": "Update User",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "url": {
+            "raw": "http://localhost:3000/admin/1",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["admin", "1"]
+          },
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"name\": \"John Updated\",\n  \"email\": \"johnupdated@example.com\",\n  \"password\": \"updatedpassword\",\n  \"role\": \"ADMIN\"\n}"
+          }
+        }
+      },
+      {
+        "name": "Delete User",
+        "request": {
+          "method": "DELETE",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:3000/admin/1",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["admin", "1"]
+          }
+        }
+      }
+    ]
+  }
+}

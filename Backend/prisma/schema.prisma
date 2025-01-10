@@ -1,59 +1,34 @@
+/**
+ * Prisma Client generator configuration.
+ */
 generator client {
   provider = "prisma-client-js"
 }
 
+/**
+ * Database configuration for PostgreSQL.
+ */
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
+/**
+ * User model representing application users.
+ */
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String
-  role      Role
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
-  Admin     Admin?
-  Teacher   Teacher?
-  Student   Student?
+  id        Int      @id @default(autoincrement())  // User's unique ID
+  name      String   // User's name
+  email     String   @unique  // User's unique email
+  password  String   // User's password
+  role      Role     // User's role (ADMIN, TEACHER, STUDENT)
+  createdAt DateTime @default(now())  // Timestamp when user is created
+  updatedAt DateTime @updatedAt  // Timestamp when user is last updated
 }
 
-model Admin {
-  id        Int      @id @default(autoincrement())
-  userId    Int      @unique
-  user      User     @relation(fields: [userId], references: [id])
-  department String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Teacher {
-  id        Int      @id @default(autoincrement())
-  userId    Int      @unique
-  user      User     @relation(fields: [userId], references: [id])
-  subject   String?
-  grade     String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Student {
-  id        Int      @id @default(autoincrement())
-  userId    Int      @unique
-  user      User     @relation(fields: [userId], references: [id])
-  class     String?
-  rollNo    Int?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
+/**
+ * Enum representing user roles.
+ */
 enum Role {
   ADMIN
   TEACHER
