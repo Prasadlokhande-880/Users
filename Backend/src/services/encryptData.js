@@ -3,7 +3,6 @@ const fs = require("fs"); // Import the fs module
 
 // Load the public key for encryption
 const publicKey = fs.readFileSync("public_key.pem", "utf8");
-const privateKey = fs.readFileSync("private_key.pem", "utf8");
 
 // Function to encrypt data using the public key
 function encryptData(data) {

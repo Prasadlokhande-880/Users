@@ -1,19 +1,20 @@
-# Use the official Node.js image as the base image
-FROM node:latest
+# Use an official node.js runtime as a parent image
+FROM node:22-alpine
 
-# Set the working directory inside the container
-WORKDIR /user/src/app
+# Set the working directory in the container
+WORKDIR /app
 
-# Copy the backend code from the local machine to the container
-COPY package.json package-lock.json /user/src/app/
+# Copy the package.json and the package-lock.json files to the container
+COPY package*.json .
 
-# Install all dependencies specified in package.json
+# Install the dependencies
 RUN npm install
 
-COPY . /user/src/app/
+# Copy the rest of the application code
+COPY . .
 
-# Expose the application port
-EXPOSE 3000
+# Expose the port that the app runs on
+EXPOSE 5003
 
-# Define the command to start the Node.js application
-CMD ["npm", "start"]
+# Define the command to run your application
+CMD ["node", "./server.js"]

@@ -1,7 +1,5 @@
-const { PrismaClient } = require("@prisma/client");
 const encryptData = require("./encryptData");
-const prisma = new PrismaClient();
-
+const prisma = require("../../prismaClient");
 /**
  * Create a new user with encrypted data.
  * @param {Object} data - User data to create.

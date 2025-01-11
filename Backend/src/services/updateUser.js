@@ -1,6 +1,5 @@
-const { PrismaClient } = require("@prisma/client");
+const prisma = require("../../prismaClient");
 const encryptData = require("./encryptData");
-const prisma = new PrismaClient();
 
 /**
  * Update user data by ID with encryption.
